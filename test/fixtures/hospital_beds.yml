@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hospital_name: MyString
+  contact_name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  address: MyString
+  city: one
+  icu_beds: 1
+  beds: 1
+  unavailable: false
+  fake: false
+  old: false
+  last_verified_at: 2021-04-22 01:39:24
+
+two:
+  hospital_name: MyString
+  contact_name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  address: MyString
+  city: two
+  icu_beds: 1
+  beds: 1
+  unavailable: false
+  fake: false
+  old: false
+  last_verified_at: 2021-04-22 01:39:24

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Oxygen Suppliers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Alternate phone</th>
+      <th>City</th>
+      <th>Unavailable</th>
+      <th>Fake</th>
+      <th>Old</th>
+      <th>Last verified at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oxygen_suppliers.each do |oxygen_supplier| %>
+      <tr>
+        <td><%= oxygen_supplier.name %></td>
+        <td><%= oxygen_supplier.phone %></td>
+        <td><%= oxygen_supplier.alternate_phone %></td>
+        <td><%= oxygen_supplier.city_id %></td>
+        <td><%= oxygen_supplier.unavailable %></td>
+        <td><%= oxygen_supplier.fake %></td>
+        <td><%= oxygen_supplier.old %></td>
+        <td><%= oxygen_supplier.last_verified_at %></td>
+        <td><%= link_to 'Show', oxygen_supplier %></td>
+        <td><%= link_to 'Edit', edit_oxygen_supplier_path(oxygen_supplier) %></td>
+        <td><%= link_to 'Destroy', oxygen_supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Oxygen Supplier', new_oxygen_supplier_path %>

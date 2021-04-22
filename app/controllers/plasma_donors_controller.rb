@@ -1,0 +1,69 @@
+class PlasmaDonorsController < ApplicationController
+  before_action :set_plasma_donor, only: %i[ show edit update destroy ]
+
+  # GET /plasma_donors or /plasma_donors.json
+  def index
+    @plasma_donors = PlasmaDonor.all
+  end
+
+  # GET /plasma_donors/1 or /plasma_donors/1.json
+  def show
+  end
+
+  # GET /plasma_donors/new
+  def new
+    @plasma_donor = PlasmaDonor.new
+  end
+
+  # GET /plasma_donors/1/edit
+  def edit
+  end
+
+  # POST /plasma_donors or /plasma_donors.json
+  def create
+    @plasma_donor = PlasmaDonor.new(plasma_donor_params)
+
+    respond_to do |format|
+      if @plasma_donor.save
+        format.html { redirect_to plasma_donors_url, notice: "Plasma donor was successfully created." }
+        format.json { render :show, status: :created, location: @plasma_donor }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @plasma_donor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /plasma_donors/1 or /plasma_donors/1.json
+  def update
+    respond_to do |format|
+      if @plasma_donor.update(plasma_donor_params)
+        format.html { redirect_to plasma_donors_url, notice: "Plasma donor was successfully updated." }
+        format.json { render :show, status: :ok, location: @plasma_donor }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @plasma_donor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /plasma_donors/1 or /plasma_donors/1.json
+  def destroy
+    @plasma_donor.destroy
+    respond_to do |format|
+      format.html { redirect_to plasma_donors_url, notice: "Plasma donor was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_plasma_donor
+      @plasma_donor = PlasmaDonor.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def plasma_donor_params
+      params.require(:plasma_donor).permit(:name, :phone, :alternate_phone, :blood_group, :city_id, :pincode, :covid_cured_at, :disclaimer)
+    end
+end

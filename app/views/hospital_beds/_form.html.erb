@@ -1,0 +1,67 @@
+<%= form_with(model: hospital_bed) do |form| %>
+  <% if hospital_bed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hospital_bed.errors.count, "error") %> prohibited this hospital_bed from being saved:</h2>
+
+      <ul>
+        <% hospital_bed.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hospital_name, 'Hospital Name*', class: 'form-label' %>
+    <%= form.text_field :hospital_name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_name, 'Contact Name*', class: 'form-label' %>
+    <%= form.text_field :contact_name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone, 'Phone*', class: 'form-label' %>
+    <%= form.text_field :phone, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alternate_phone, class: 'form-label' %>
+    <%= form.text_field :alternate_phone, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, class: 'form-label' %>
+    <%= form.text_field :address, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city_id, 'City*', class: 'form-label' %>
+    <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
+  </div>
+
+  <div class="field">
+    <%= form.label :icu_beds, "Number of ICU Beds Available*", class: 'form-label' %>
+    <%= form.number_field :icu_beds, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beds, "Number of Oxygen Beds Available*", class: 'form-label' %>
+    <%= form.number_field :beds, class: 'form-control', required: true %>
+  </div>
+
+  <% if !hospital_bed.persisted? %>
+  <div class="field d-flex flex-column-reverse">
+    <%= form.label :disclaimer, class: 'form-label' do %>
+    I hereby agree to the Terms and Conditions of sharing this data to the best of my knowledge to help the people who need it.
+    <% end %>
+    <%= form.check_box :disclaimer, required: true %>
+
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

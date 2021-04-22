@@ -1,0 +1,39 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+#page-home {
+  section.header {
+    padding: 24px 12px;
+
+    color: #6c757d;
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    h4 {
+      font-weight: 400;
+    }
+
+    p {
+      margin-top: 12px;
+      font-weight: 400
+    }
+  }
+
+
+  section.main {
+    button {
+      small {
+        display: block;
+        font-size: 12px;
+      }
+    }
+  }
+
+
+  section.volunteer-reg-link {
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,47 @@
+<%= form_with(model: oxygen_supplier) do |form| %>
+  <% if oxygen_supplier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(oxygen_supplier.errors.count, "error") %> prohibited this oxygen_supplier from being saved:</h2>
+
+      <ul>
+        <% oxygen_supplier.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Name*", class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone, "Phone*", class: 'form-label' %>
+    <%= form.text_field :phone, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alternate_phone, class: 'form-label' %>
+    <%= form.text_field :alternate_phone, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city_id, "City*", class: 'form-label' %>
+    <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
+  </div>
+
+  <% if !oxygen_supplier.persisted? %>
+    <div class="field d-flex flex-column-reverse">
+      <%= form.label :disclaimer, class: 'form-label' do %>
+        I hereby agree to the Terms and Conditions of sharing this data to the best of my knowledge to help the people who need it.
+      <% end %>
+      <%= form.check_box :disclaimer, required: true %>
+
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jaocoronaapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+
+    <%= yield :head %>
+    <%= yield :meta %>
+    <%= yield :extra_styles %>
+  </head>
+
+  <body>
+    <%= render 'layouts/top_nav' %>
+
+
+
+    <div class="container main">
+      <%= yield %>
+    </div>
+
+
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'select2.min', 'data-turbolinks-track': 'reload' %>
+    <script>
+        $(document).ready(function() {
+            $('.city-select').select2();
+        });
+    </script>
+    <%= yield :page_scripts %>
+  </body>
+</html>

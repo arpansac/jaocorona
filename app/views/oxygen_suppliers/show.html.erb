@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @oxygen_supplier.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @oxygen_supplier.phone %>
+</p>
+
+<p>
+  <strong>Alternate phone:</strong>
+  <%= @oxygen_supplier.alternate_phone %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @oxygen_supplier.city_id %>
+</p>
+
+<p>
+  <strong>Unavailable:</strong>
+  <%= @oxygen_supplier.unavailable %>
+</p>
+
+<p>
+  <strong>Fake:</strong>
+  <%= @oxygen_supplier.fake %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @oxygen_supplier.old %>
+</p>
+
+<p>
+  <strong>Last verified at:</strong>
+  <%= @oxygen_supplier.last_verified_at %>
+</p>
+
+<%= link_to 'Edit', edit_oxygen_supplier_path(@oxygen_supplier) %> |
+<%= link_to 'Back', oxygen_suppliers_path %>

@@ -1,0 +1,58 @@
+<div id="page-home">
+  <section class="header">
+    <h1>
+      COVID-19 Recovery Help
+    </h1>
+    <h4>
+      This is an effort to bring together and verify all the contacts of the needed resources for people fighting COVID-19.
+    </h4>
+    <p>
+      We have a small team of volunteers who are regularly verifying all the contacts submitted.
+    </p>
+  </section>
+
+
+  <section class="main d-flex gap-3">
+    <%= button_to plasma_donors_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
+      Find Plasma Donor
+      <br/>
+      <small>
+        Total: <%= @plasma_donors[0] %>
+      </small>
+      <small>
+        Last Updated: <%= !@plasma_donors[1].blank? ?  time_ago_in_words(@plasma_donors[1].updated_at) : 'NA' %>
+      </small>
+    <% end %>
+
+    <%= button_to hospital_beds_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
+      Find Hospital With Beds
+      <br/>
+      <small>
+        Total: <%= @hospital_beds[0] %>
+      </small>
+      <small>
+        Last Updated: <%= !@hospital_beds[1].blank? ?  time_ago_in_words(@hospital_beds[1].updated_at) : 'NA' %>
+      </small>
+    <% end %>
+
+    <%= button_to oxygen_suppliers_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
+      Find Oxygen Suppliers
+      <br/>
+      <small>
+        Total: <%= @oxygen_suppliers[0] %>
+      </small>
+      <small>
+        Last Updated: <%= !@oxygen_suppliers[1].blank? ?  time_ago_in_words(@oxygen_suppliers[1].updated_at) : 'NA' %>
+      </small>
+    <% end %>
+  </section>
+
+  <section class="volunteer-reg-link">
+    <h5>
+      If you can bring in more contacts or can help us verify the contacts being received, please
+      <%= link_to 'click here to join as a volunteer', new_volunteer_path, target: '_blank' %>
+    </h5>
+  </section>
+
+
+</div>

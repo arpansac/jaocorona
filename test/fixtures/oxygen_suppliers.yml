@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  city: one
+  unavailable: false
+  fake: false
+  old: false
+  last_verified_at: 2021-04-22 01:41:13
+
+two:
+  name: MyString
+  phone: MyString
+  alternate_phone: MyString
+  city: two
+  unavailable: false
+  fake: false
+  old: false
+  last_verified_at: 2021-04-22 01:41:13

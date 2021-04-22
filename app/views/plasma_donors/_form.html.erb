@@ -1,0 +1,75 @@
+<%= form_with(model: plasma_donor) do |form| %>
+  <% if plasma_donor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plasma_donor.errors.count, "error") %> prohibited this plasma_donor from being saved:</h2>
+
+      <ul>
+        <% plasma_donor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, 'Name*', class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone, 'Phone*', class: 'form-label' %>
+    <%= form.text_field :phone, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alternate_phone, class: 'form-label' %>
+    <%= form.text_field :alternate_phone, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blood_group, 'Blood Group*', class: 'form-label' %>
+    <%= form.select :blood_group, PlasmaDonor.blood_groups.keys.map{|bgroup| [bgroup.humanize, bgroup]}, {include_blank: 'Select'} ,{class: 'form-select', required: true}%>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :covid_cured_at, class: 'form-label' do %>
+    When did you get cured of COVID-19?*
+      <ul>
+        <li>
+          If you got cured more than 14 days ago, then people can contact you right now
+        </li>
+        <li>
+          If you got cured in under 14 days, then we will reach out to you as soon as 14 days pass
+        </li>
+      </ul>
+      In both cases, please fill the form
+    <% end %>
+    <%= form.date_field :covid_cured_at, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city_id, 'City*', class: 'form-label' %>
+    <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :pincode, class: 'form-label' %>
+    <%= form.text_field :pincode, class: 'form-control' %>
+  </div>
+
+  <% if !plasma_donor.persisted? %>
+    <div class="field d-flex flex-column-reverse">
+      <%= form.label :disclaimer, class: 'form-label' do %>
+        I hereby agree to the Terms and Conditions of sharing this data to the best of my knowledge to help the people who need it.
+      <% end %>
+      <%= form.check_box :disclaimer, required: true %>
+
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

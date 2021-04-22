@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @plasma_donor.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @plasma_donor.phone %>
+</p>
+
+<p>
+  <strong>Alternate phone:</strong>
+  <%= @plasma_donor.alternate_phone %>
+</p>
+
+<p>
+  <strong>Blood group:</strong>
+  <%= @plasma_donor.blood_group %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @plasma_donor.city_id %>
+</p>
+
+<p>
+  <strong>Pincode:</strong>
+  <%= @plasma_donor.pincode %>
+</p>
+
+<p>
+  <strong>Last verified at:</strong>
+  <%= @plasma_donor.last_verified_at %>
+</p>
+
+<p>
+  <strong>Unavailable:</strong>
+  <%= @plasma_donor.unavailable %>
+</p>
+
+<p>
+  <strong>Fake:</strong>
+  <%= @plasma_donor.fake %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @plasma_donor.old %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @plasma_donor.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_plasma_donor_path(@plasma_donor) %> |
+<%= link_to 'Back', plasma_donors_path %>

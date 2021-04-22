@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hospital name:</strong>
+  <%= @hospital_bed.hospital_name %>
+</p>
+
+<p>
+  <strong>Contact name:</strong>
+  <%= @hospital_bed.contact_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @hospital_bed.phone %>
+</p>
+
+<p>
+  <strong>Alternate phone:</strong>
+  <%= @hospital_bed.alternate_phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @hospital_bed.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @hospital_bed.city_id %>
+</p>
+
+<p>
+  <strong>Icu beds:</strong>
+  <%= @hospital_bed.icu_beds %>
+</p>
+
+<p>
+  <strong>Beds:</strong>
+  <%= @hospital_bed.beds %>
+</p>
+
+<p>
+  <strong>Unavailable:</strong>
+  <%= @hospital_bed.unavailable %>
+</p>
+
+<p>
+  <strong>Fake:</strong>
+  <%= @hospital_bed.fake %>
+</p>
+
+<p>
+  <strong>Old:</strong>
+  <%= @hospital_bed.old %>
+</p>
+
+<p>
+  <strong>Last verified at:</strong>
+  <%= @hospital_bed.last_verified_at %>
+</p>
+
+<%= link_to 'Edit', edit_hospital_bed_path(@hospital_bed) %> |
+<%= link_to 'Back', hospital_beds_path %>
