@@ -7,7 +7,7 @@
 rails_env = "production"
 environment rails_env
 
-app_dir = '/home/ubuntu/jaocoronaapp' # Update me with your root rails app path
+app_dir = '/home/ubuntu/jaocorona' # Update me with your root rails app path
 
 bind  "unix://#{app_dir}/shared/sockets/puma.sock"
 pidfile "#{app_dir}/shared/pids/puma.pid"
