@@ -7,4 +7,11 @@ class HospitalBed < ApplicationRecord
         unavailable: false,
         ).order('created_at desc').count, HospitalBed.all.order('updated_at desc').first
   end
+
+  def self.active_list
+    return HospitalBed.where(
+        fake: false,
+        unavailable: false,
+        ).order('created_at desc')
+  end
 end

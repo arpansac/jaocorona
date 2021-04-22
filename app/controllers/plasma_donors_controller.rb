@@ -6,9 +6,9 @@ class PlasmaDonorsController < ApplicationController
   def index
     if (params[:city_id])
       @city = City.find(params[:city_id].to_i)
-      @plasma_donors = @city.plasma_donors.active
+      @plasma_donors = @city.plasma_donors.active_list
     else
-      @plasma_donors = PlasmaDonor.active
+      @plasma_donors = PlasmaDonor.active_list
     end
   end
 

@@ -7,9 +7,9 @@ class HospitalBedsController < ApplicationController
 
     if (params[:city_id])
       @city = City.find(params[:city_id].to_i)
-      @hospital_beds = @city.hospital_beds.active
+      @hospital_beds = @city.hospital_beds.active_list
     else
-      @hospital_beds = HospitalBed.active
+      @hospital_beds = HospitalBed.active_list
     end
   end
 

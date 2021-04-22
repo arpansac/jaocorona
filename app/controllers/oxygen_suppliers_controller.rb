@@ -6,9 +6,9 @@ class OxygenSuppliersController < ApplicationController
   def index
     if (params[:city_id])
       @city = City.find(params[:city_id].to_i)
-      @oxygen_suppliers = @city.oxygen_suppliers.active
+      @oxygen_suppliers = @city.oxygen_suppliers.active_list
     else
-      @oxygen_suppliers = OxygenSupplier.active
+      @oxygen_suppliers = OxygenSupplier.active_list
     end
   end
 
