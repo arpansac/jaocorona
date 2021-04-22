@@ -3,8 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "font-awesome-rails"
 
-gem 'jquery-rails'
-
 gem 'bootstrap', '~> 5.0.0.beta2'
 
 gem 'acts_as_paranoid', '~> 0.7.0'
