@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
   before_action :set_volunteer, only: %i[ show edit update destroy ]
+  before_action :admin_permission?, only: [:index, :edit, :update, :destroy]
 
   # GET /volunteers or /volunteers.json
   def index
@@ -25,7 +26,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        format.html { redirect_to @volunteer, notice: "Volunteer was successfully created." }
+        format.html { redirect_to root_path, notice: "Volunteer was successfully created." }
         format.json { render :show, status: :created, location: @volunteer }
       else
         format.html { render :new, status: :unprocessable_entity }

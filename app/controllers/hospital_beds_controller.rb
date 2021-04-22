@@ -4,7 +4,13 @@ class HospitalBedsController < ApplicationController
   before_action :admin_permission?, only: [:destroy]
   # GET /hospital_beds or /hospital_beds.json
   def index
-    @hospital_beds = HospitalBed.all
+
+    if (params[:city_id])
+      @city = City.find(params[:city_id].to_i)
+      @hospital_beds = @city.hospital_beds.active
+    else
+      @hospital_beds = HospitalBed.active
+    end
   end
 
   # GET /hospital_beds/1 or /hospital_beds/1.json

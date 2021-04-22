@@ -17,7 +17,23 @@
       Refresh Page
     </button>
   </div>
+
+
   <div class="table-container">
+    <div class="select-city">
+      <h6>
+        Select Your City
+        <% if !@city.blank? %>
+        <small>
+          <%= link_to 'Clear', hospital_beds_path %>
+        </small>
+        <% end %>
+      </h6>
+      <%= form_with url: hospital_beds_path, method: :get, local: true do |f| %>
+        <%= f.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {selected: (@city.blank? ? nil : @city.id), include_blank: 'Select Your City'}, class: 'form-select city-select', :onchange => 'this.form.submit();' %>
+      <% end %>
+
+    </div>
     <table class="table table-hover">
       <thead>
       <tr class="table-primary">

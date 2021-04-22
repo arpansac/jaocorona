@@ -1,10 +1,17 @@
+<% content_for :meta do %>
+  <title>
+    India Covid Info
+  </title>
+  <meta name="description" content="Let's help COVID patients with accurate information of Plasma Donors, Hospitals with ICU Beds and Oxygen Suppliers in our cities in India">
+<% end %>
+
 <div id="page-home">
   <section class="header">
     <h1>
       COVID-19 Recovery Help
     </h1>
     <h4>
-      This is an effort to bring together and verify all the contacts of the needed resources for people fighting COVID-19.
+      This is an effort to bring together and verify all the contacts of the needed resources for people fighting COVID-19 in our country India.
     </h4>
     <p>
       We have a small team of volunteers who are regularly verifying all the contacts submitted.
@@ -46,12 +53,24 @@
       </small>
     <% end %>
   </section>
-
   <section class="volunteer-reg-link">
     <h5>
       If you can bring in more contacts or can help us verify the contacts being received, please
       <%= link_to 'click here to join as a volunteer from home', new_volunteer_path, target: '_blank' %>
     </h5>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Share
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <div class="px-2 py-1">
+            <%= social_share_button_tag('India Covid Info') %>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
 
 

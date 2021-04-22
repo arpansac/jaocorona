@@ -4,7 +4,12 @@ class PlasmaDonorsController < ApplicationController
   before_action :admin_permission?, only: [:destroy]
   # GET /plasma_donors or /plasma_donors.json
   def index
-    @plasma_donors = PlasmaDonor.all
+    if (params[:city_id])
+      @city = City.find(params[:city_id].to_i)
+      @plasma_donors = @city.plasma_donors.active
+    else
+      @plasma_donors = PlasmaDonor.active
+    end
   end
 
   # GET /plasma_donors/1 or /plasma_donors/1.json

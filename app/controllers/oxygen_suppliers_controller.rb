@@ -4,7 +4,12 @@ class OxygenSuppliersController < ApplicationController
   before_action :admin_permission?, only: [:destroy]
   # GET /oxygen_suppliers or /oxygen_suppliers.json
   def index
-    @oxygen_suppliers = OxygenSupplier.all
+    if (params[:city_id])
+      @city = City.find(params[:city_id].to_i)
+      @oxygen_suppliers = @city.oxygen_suppliers.active
+    else
+      @oxygen_suppliers = OxygenSupplier.active
+    end
   end
 
   # GET /oxygen_suppliers/1 or /oxygen_suppliers/1.json
