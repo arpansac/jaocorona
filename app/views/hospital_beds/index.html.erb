@@ -1,49 +1,85 @@
-<p id="notice"><%= notice %></p>
+<div id="page-hospital-beds-index">
+  <p id="notice"><%= notice %></p>
 
-<h1>Hospital Beds</h1>
+  <h1>Hospital Beds</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Hospital name</th>
-      <th>Contact name</th>
-      <th>Phone</th>
-      <th>Alternate phone</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Icu beds</th>
-      <th>Beds</th>
-      <th>Unavailable</th>
-      <th>Fake</th>
-      <th>Old</th>
-      <th>Last verified at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div>
 
-  <tbody>
-    <% @hospital_beds.each do |hospital_bed| %>
-      <tr>
-        <td><%= hospital_bed.hospital_name %></td>
-        <td><%= hospital_bed.contact_name %></td>
-        <td><%= hospital_bed.phone %></td>
-        <td><%= hospital_bed.alternate_phone %></td>
-        <td><%= hospital_bed.address %></td>
-        <td><%= hospital_bed.city_id %></td>
-        <td><%= hospital_bed.icu_beds %></td>
-        <td><%= hospital_bed.beds %></td>
-        <td><%= hospital_bed.unavailable %></td>
-        <td><%= hospital_bed.fake %></td>
-        <td><%= hospital_bed.old %></td>
-        <td><%= hospital_bed.last_verified_at %></td>
-        <td><%= link_to 'Show', hospital_bed %></td>
-        <td><%= link_to 'Edit', edit_hospital_bed_path(hospital_bed) %></td>
-        <td><%= link_to 'Destroy', hospital_bed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <h4>
+      <%= link_to 'Click Here', new_hospital_bed_path, class: 'btn btn-lg btn-primary' %>
+      to share any information about available hospital beds. Our team will re-verify it too.
+    </h4>
+  </div>
+
+  <div>
+    <button onClick="window.location.reload();" class="btn btn-outline-secondary btn-sm">
+      <i class="fas fa-redo"></i>
+      Refresh Page
+    </button>
+  </div>
+  <div class="table-container">
+    <table class="table table-hover">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">City</th>
+        <th scope="col">Time</th>
+        <th scope="col">Hospital name</th>
+        <th scope="col">Contact name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">ICU COVID beds</th>
+        <th scope="col">Oxygen Beds</th>
+        <% if user_signed_in? %>
+        <th scope="col">Unavailable</th>
+        <th scope="col">Fake</th>
+        <th scope="col">Old</th>
+        <th colspan="3"></th>
+        <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @hospital_beds.each do |hospital_bed| %>
+        <tr>
+          <td><%= hospital_bed.city.name %>, <%= hospital_bed.city.state %></td>
+          <td>
+            <% if hospital_bed.last_verified_at %>
+              ✅ Verified: <%= time_ago_in_words(hospital_bed.last_verified_at) %>
+              <br/>
+              <br/>
+            <% end %>
 
-<%= link_to 'New Hospital Bed', new_hospital_bed_path %>
+            Submitted: <%= time_ago_in_words(hospital_bed.updated_at) %>
+          </td>
+          <td><%= hospital_bed.hospital_name %></td>
+          <td><%= hospital_bed.contact_name %></td>
+          <td>
+            <%= hospital_bed.phone %>
+            <%= hospital_bed.alternate_phone %>
+          </td>
+          <td>
+            <%= hospital_bed.address %>
+          </td>
+          <td><%= hospital_bed.icu_beds %></td>
+          <td><%= hospital_bed.beds %></td>
+          <% if user_signed_in? %>
+          <td><%= hospital_bed.unavailable %></td>
+          <td><%= hospital_bed.fake %></td>
+          <td><%= hospital_bed.old %></td>
+          <td><%= link_to 'Show', hospital_bed %></td>
+          <td><%= link_to 'Edit', edit_hospital_bed_path(hospital_bed) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <br>
+
+  <h6>
+    <%= link_to 'Click Here', new_hospital_bed_path, class: 'btn btn-lg btn-md' %>
+    to share any information about available hospital beds. Our team will re-verify it too.
+  </h6>
+
+</div>

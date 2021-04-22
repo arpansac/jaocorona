@@ -1,47 +1,86 @@
-<p id="notice"><%= notice %></p>
+<div id="page-plasma-donor-index">
+  <p id="notice"><%= notice %></p>
 
-<h1>Plasma Donors</h1>
+  <h1>Plasma Donors</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Alternate phone</th>
-      <th>Blood group</th>
-      <th>City</th>
-      <th>Pincode</th>
-      <th>Last verified at</th>
-      <th>Unavailable</th>
-      <th>Fake</th>
-      <th>Old</th>
-      <th>Deleted at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div>
 
-  <tbody>
-    <% @plasma_donors.each do |plasma_donor| %>
-      <tr>
-        <td><%= plasma_donor.name %></td>
-        <td><%= plasma_donor.phone %></td>
-        <td><%= plasma_donor.alternate_phone %></td>
-        <td><%= plasma_donor.blood_group %></td>
-        <td><%= plasma_donor.city_id %></td>
-        <td><%= plasma_donor.pincode %></td>
-        <td><%= plasma_donor.last_verified_at %></td>
-        <td><%= plasma_donor.unavailable %></td>
-        <td><%= plasma_donor.fake %></td>
-        <td><%= plasma_donor.old %></td>
-        <td><%= plasma_donor.deleted_at %></td>
-        <td><%= link_to 'Show', plasma_donor %></td>
-        <td><%= link_to 'Edit', edit_plasma_donor_path(plasma_donor) %></td>
-        <td><%= link_to 'Destroy', plasma_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <h4>
+      <%= link_to 'Click Here', new_plasma_donor_path, class: 'btn btn-lg btn-primary' %>
+      share your own or any other Plasma Donor's information. Our team will re-verify it too.
+    </h4>
+  </div>
+
+  <div>
+    <button onClick="window.location.reload();" class="btn btn-outline-secondary btn-sm">
+      <i class="fas fa-redo"></i>
+      Refresh Page
+    </button>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-hover">
+      <thead>
+      <tr class="table-primary">
+        <th  scope="col">City</th>
+        <th  scope="col">Pincode</th>
+        <th  scope="col">Blood group</th>
+        <th  scope="col">Time</th>
+        <th  scope="col">Name</th>
+        <th  scope="col">Phone</th>
+        <th  scope="col">Alternate phone</th>
+
+        <% if user_signed_in? %>
+        <th  scope="col">Unavailable</th>
+        <th  scope="col">Fake</th>
+        <th  scope="col">Old</th>
+        <th  scope="col">Deleted at</th>
+        <th colspan="3"></th>
+        <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @plasma_donors.each do |plasma_donor| %>
+        <tr>
+          <td><%= plasma_donor.city_id %></td>
+          <td><%= plasma_donor.pincode %></td>
+          <td><%= plasma_donor.blood_group %></td>
+          <td>
+            <% if plasma_donor.last_verified_at %>
+              ✅ Verified: <%= time_ago_in_words(plasma_donor.last_verified_at) %>
+              <br/>
+              <br/>
+            <% end %>
 
-<%= link_to 'New Plasma Donor', new_plasma_donor_path %>
+            Submitted: <%= time_ago_in_words(plasma_donor.updated_at) %>
+          </td>
+          <td><%= plasma_donor.name %></td>
+          <td><%= plasma_donor.phone %></td>
+          <td><%= plasma_donor.alternate_phone %></td>
+
+          <% if user_signed_in? %>
+          <td><%= plasma_donor.unavailable %></td>
+          <td><%= plasma_donor.fake %></td>
+          <td><%= plasma_donor.old %></td>
+          <td><%= plasma_donor.deleted_at %></td>
+          <td><%= link_to 'Show', plasma_donor %></td>
+          <td><%= link_to 'Edit', edit_plasma_donor_path(plasma_donor) %></td>
+          <td><%= link_to 'Destroy', plasma_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div>
+
+    <h6>
+      <%= link_to 'Click Here', new_plasma_donor_path, class: 'btn btn-lg btn-primary' %>
+      share your own or any other Plasma Donor's information. Our team will re-verify it too.
+    </h6>
+  </div>
+
+</div>

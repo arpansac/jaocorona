@@ -8,3 +8,21 @@
   max-width: 800px;
   margin: 24px auto;
 }
+
+
+#page-hospital-beds-index {
+
+  .table-container {
+    margin-top: 36px;
+    max-width: 100%;
+    overflow-x: auto;
+
+    table {
+      tr {
+        td {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
