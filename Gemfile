@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'mini_racer', platforms: :ruby
+
 gem "font-awesome-rails"
 
 gem 'bootstrap', '~> 5.0.0.beta2'
