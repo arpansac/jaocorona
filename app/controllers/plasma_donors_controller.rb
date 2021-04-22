@@ -1,6 +1,7 @@
 class PlasmaDonorsController < ApplicationController
-  before_action :set_plasma_donor, only: %i[ show edit update destroy ]
-
+  before_action :set_plasma_donor, only: %i[ show edit update destroy update_unavailable update_fake ]
+  before_action :volunteer_permission?, only: [:show, :edit, :update]
+  before_action :admin_permission?, only: [:destroy]
   # GET /plasma_donors or /plasma_donors.json
   def index
     @plasma_donors = PlasmaDonor.all
@@ -45,6 +46,16 @@ class PlasmaDonorsController < ApplicationController
         format.json { render json: @plasma_donor.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+
+  def update_fake
+    @plasma_donor.update(fake: params[:fake])
+  end
+
+
+  def update_unavailable
+    @plasma_donor.update(unavailable: params[:unavailable])
   end
 
   # DELETE /plasma_donors/1 or /plasma_donors/1.json

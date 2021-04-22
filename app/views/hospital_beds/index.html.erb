@@ -32,7 +32,6 @@
         <% if user_signed_in? %>
         <th scope="col">Unavailable</th>
         <th scope="col">Fake</th>
-        <th scope="col">Old</th>
         <th colspan="3"></th>
         <% end %>
       </tr>
@@ -63,11 +62,22 @@
           <td><%= hospital_bed.icu_beds %></td>
           <td><%= hospital_bed.beds %></td>
           <% if user_signed_in? %>
-          <td><%= hospital_bed.unavailable %></td>
-          <td><%= hospital_bed.fake %></td>
-          <td><%= hospital_bed.old %></td>
+            <td>
+              <%= form_with url: update_unavailable_hospital_bed_path(id: hospital_bed.id), method: :post, local: false do |f| %>
+                <%= f.select :unavailable, [['Yes', true], ['No', false]], {selected: hospital_bed.unavailable, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
+
+            <td>
+              <%= form_with url: update_fake_hospital_bed_path(id: hospital_bed.id), method: :post, local: false do |f| %>
+                <%= f.select :fake, [['Yes', true], ['No', false]], {selected: hospital_bed.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
           <td><%= link_to 'Show', hospital_bed %></td>
           <td><%= link_to 'Edit', edit_hospital_bed_path(hospital_bed) %></td>
+          <% if current_user.admin_permission? %>
+            <td><%= link_to 'Destroy', hospital_bed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
           <% end %>
         </tr>
       <% end %>
@@ -78,7 +88,7 @@
   <br>
 
   <h6>
-    <%= link_to 'Click Here', new_hospital_bed_path, class: 'btn btn-lg btn-md' %>
+    <%= link_to 'Click Here', new_hospital_bed_path, class: 'btn btn-primary btn-md' %>
     to share any information about available hospital beds. Our team will re-verify it too.
   </h6>
 

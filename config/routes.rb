@@ -1,9 +1,24 @@
 Rails.application.routes.draw do
   get 'home/home_page'
   resources :volunteers
-  resources :oxygen_suppliers
-  resources :hospital_beds
-  resources :plasma_donors
+  resources :oxygen_suppliers do
+    member do
+      post :update_fake
+      post :update_unavailable
+    end
+  end
+  resources :hospital_beds do
+    member do
+      post :update_fake
+      post :update_unavailable
+    end
+  end
+  resources :plasma_donors do
+    member do
+      post :update_fake
+      post :update_unavailable
+    end
+  end
   resources :cities
   devise_for :users
 

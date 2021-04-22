@@ -29,7 +29,9 @@
 
     <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'noty.min', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'select2.min', 'data-turbolinks-track': 'reload' %>
+
     <script>
         $(document).ready(function() {
             $('.city-select').select2();

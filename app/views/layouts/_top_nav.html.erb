@@ -27,10 +27,15 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div>
+        <% if user_signed_in? %>
+          <p>
+            <%= current_user.email %>
+            &nbsp;
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>

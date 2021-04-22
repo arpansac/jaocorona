@@ -33,8 +33,6 @@
         <% if user_signed_in? %>
         <th  scope="col">Unavailable</th>
         <th  scope="col">Fake</th>
-        <th  scope="col">Old</th>
-        <th  scope="col">Deleted at</th>
         <th colspan="3"></th>
         <% end %>
       </tr>
@@ -60,13 +58,22 @@
           <td><%= plasma_donor.alternate_phone %></td>
 
           <% if user_signed_in? %>
-          <td><%= plasma_donor.unavailable %></td>
-          <td><%= plasma_donor.fake %></td>
-          <td><%= plasma_donor.old %></td>
-          <td><%= plasma_donor.deleted_at %></td>
-          <td><%= link_to 'Show', plasma_donor %></td>
+          <td>
+            <%= form_with url: update_unavailable_plasma_donor_path(id: plasma_donor.id), method: :post, local: false do |f| %>
+              <%= f.select :unavailable, [['Yes', true], ['No', false]], {selected: plasma_donor.unavailable, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+            <% end %>
+          </td>
+
+          <td>
+            <%= form_with url: update_fake_plasma_donor_path(id: plasma_donor.id), method: :post, local: false do |f| %>
+              <%= f.select :fake, [['Yes', true], ['No', false]], {selected: plasma_donor.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+            <% end %>
+          </td>
+
           <td><%= link_to 'Edit', edit_plasma_donor_path(plasma_donor) %></td>
-          <td><%= link_to 'Destroy', plasma_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.admin_permission? %>
+              <td><%= link_to 'Destroy', plasma_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
           <% end %>
         </tr>
       <% end %>

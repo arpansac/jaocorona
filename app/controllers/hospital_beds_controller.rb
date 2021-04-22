@@ -1,6 +1,7 @@
 class HospitalBedsController < ApplicationController
-  before_action :set_hospital_bed, only: %i[ show edit update destroy ]
-
+  before_action :set_hospital_bed, only: %i[ show edit update destroy update_unavailable update_fake ]
+  before_action :volunteer_permission?, only: [:show, :edit, :update]
+  before_action :admin_permission?, only: [:destroy]
   # GET /hospital_beds or /hospital_beds.json
   def index
     @hospital_beds = HospitalBed.all
@@ -46,6 +47,16 @@ class HospitalBedsController < ApplicationController
       end
     end
   end
+
+  def update_fake
+    @hospital_bed.update(fake: params[:fake])
+  end
+
+
+  def update_unavailable
+    @hospital_bed.update(unavailable: params[:unavailable])
+  end
+
 
   # DELETE /hospital_beds/1 or /hospital_beds/1.json
   def destroy

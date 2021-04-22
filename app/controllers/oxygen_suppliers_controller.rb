@@ -1,6 +1,7 @@
 class OxygenSuppliersController < ApplicationController
-  before_action :set_oxygen_supplier, only: %i[ show edit update destroy ]
-
+  before_action :set_oxygen_supplier, only: %i[ show edit update destroy update_unavailable update_fake ]
+  before_action :volunteer_permission?, only: [:show, :edit, :update]
+  before_action :admin_permission?, only: [:destroy]
   # GET /oxygen_suppliers or /oxygen_suppliers.json
   def index
     @oxygen_suppliers = OxygenSupplier.all
@@ -45,6 +46,15 @@ class OxygenSuppliersController < ApplicationController
         format.json { render json: @oxygen_supplier.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_fake
+    @oxygen_supplier.update(fake: params[:fake])
+  end
+
+
+  def update_unavailable
+    @oxygen_supplier.update(unavailable: params[:unavailable])
   end
 
   # DELETE /oxygen_suppliers/1 or /oxygen_suppliers/1.json

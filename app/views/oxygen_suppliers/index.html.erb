@@ -29,7 +29,6 @@
         <% if user_signed_in? %>
         <th scope="col">Unavailable</th>
         <th scope="col">Fake</th>
-        <th scope="col">Old</th>
         <th scope="col">Last verified at</th>
         <th colspan="3"></th>
         <% end %>
@@ -54,12 +53,22 @@
           <td><%= oxygen_supplier.alternate_phone %></td>
           <% if user_signed_in? %>
 
-          <td><%= oxygen_supplier.unavailable %></td>
-          <td><%= oxygen_supplier.fake %></td>
-          <td><%= oxygen_supplier.old %></td>
+            <td>
+              <%= form_with url: update_unavailable_oxygen_supplier_path(id: oxygen_supplier.id), method: :post, local: false do |f| %>
+                <%= f.select :unavailable, [['Yes', true], ['No', false]], {selected: oxygen_supplier.unavailable, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
+
+            <td>
+              <%= form_with url: update_fake_oxygen_supplier_path(id: oxygen_supplier.id), method: :post, local: false do |f| %>
+                <%= f.select :fake, [['Yes', true], ['No', false]], {selected: oxygen_supplier.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
           <td><%= link_to 'Show', oxygen_supplier %></td>
           <td><%= link_to 'Edit', edit_oxygen_supplier_path(oxygen_supplier) %></td>
-          <td><%= link_to 'Destroy', oxygen_supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if current_user.admin_permission? %>
+              <td><%= link_to 'Destroy', oxygen_supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>
