@@ -73,13 +73,13 @@
           <td>
             <span id="plasma-donor-verified-<%= plasma_donor.id %>">
               <% if plasma_donor.last_verified_at %>
-             ✅ Verified: <%= time_ago_in_words(plasma_donor.last_verified_at) %>
+             ✅ Verified: <%= time_ago_in_words(plasma_donor.last_verified_at) %> ago
                 <br/>
                 <br/>
               <% end %>
             </span>
 
-            Submitted: <%= time_ago_in_words(plasma_donor.created_at) %>
+            Submitted: <%= time_ago_in_words(plasma_donor.created_at) %> ago
           </td>
           <td><%= plasma_donor.name %></td>
           <td><%= plasma_donor.phone %></td>

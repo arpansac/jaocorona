@@ -72,13 +72,13 @@
           <td>
             <span id="hospital-bed-verified-<%= hospital_bed.id %>">
               <% if hospital_bed.last_verified_at %>
-             ✅ Verified: <%= time_ago_in_words(hospital_bed.last_verified_at) %>
+             ✅ Verified: <%= time_ago_in_words(hospital_bed.last_verified_at) %> ago
                 <br/>
                 <br/>
               <% end %>
             </span>
 
-            Submitted: <%= time_ago_in_words(hospital_bed.created_at) %>
+            Submitted: <%= time_ago_in_words(hospital_bed.created_at) %> ago
           </td>
           <td><%= hospital_bed.hospital_name %></td>
           <td><%= hospital_bed.contact_name %></td>

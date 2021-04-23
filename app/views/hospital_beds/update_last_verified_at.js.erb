@@ -1,6 +1,6 @@
 {
 
-    $('#hospital-bed-verified-<%= @hospital_bed.id %>').html('✅ Verified: <%= time_ago_in_words(@hospital_bed.last_verified_at) %> <br/> <br/>');
+    $('#hospital-bed-verified-<%= @hospital_bed.id %>').html('✅ Verified: <%= time_ago_in_words(@hospital_bed.last_verified_at) %> ago <br/> <br/>');
 
     let notification = new Noty({
         text: 'Updated',

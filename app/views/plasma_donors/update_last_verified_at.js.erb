@@ -1,6 +1,6 @@
 {
 
-    $('#plasma-donor-verified-<%= @plasma_donor.id %>').html('✅ Verified: <%= time_ago_in_words(@plasma_donor.last_verified_at) %> <br/> <br/>');
+    $('#plasma-donor-verified-<%= @plasma_donor.id %>').html('✅ Verified: <%= time_ago_in_words(@plasma_donor.last_verified_at) %> ago <br/> <br/>');
 
     let notification = new Noty({
         text: 'Updated',

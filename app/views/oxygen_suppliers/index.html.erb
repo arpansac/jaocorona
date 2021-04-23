@@ -57,13 +57,13 @@
           <td>
             <span id="oxygen-supplier-verified-<%= oxygen_supplier.id %>">
               <% if oxygen_supplier.last_verified_at %>
-             ✅ Verified: <%= time_ago_in_words(oxygen_supplier.last_verified_at) %>
+             ✅ Verified: <%= time_ago_in_words(oxygen_supplier.last_verified_at) %> ago
                 <br/>
                 <br/>
               <% end %>
             </span>
 
-            Submitted: <%= time_ago_in_words(oxygen_supplier.created_at) %>
+            Submitted: <%= time_ago_in_words(oxygen_supplier.created_at) %> ago
           </td>
           <td><%= oxygen_supplier.name %></td>
           <td><%= oxygen_supplier.phone %></td>

@@ -26,7 +26,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        format.html { redirect_to root_path, notice: "Thank You for submitting request to Volunteer" }
+        format.html { redirect_to root_path, notice: "Thank You for submitting request to Volunteer. We will get back to you as soon as a requirement arises :)" }
         format.json { render :show, status: :created, location: @volunteer }
       else
         format.html { render :new, status: :unprocessable_entity }

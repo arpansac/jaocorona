@@ -1,6 +1,6 @@
 {
 
-    $('#oxygen-supplier-verified-<%= @oxygen_supplier.id %>').html('✅ Verified: <%= time_ago_in_words(@oxygen_supplier.last_verified_at) %> <br/> <br/>');
+    $('#oxygen-supplier-verified-<%= @oxygen_supplier.id %>').html('✅ Verified: <%= time_ago_in_words(@oxygen_supplier.last_verified_at) %> ago <br/> <br/>');
 
     let notification = new Noty({
         text: 'Updated',
