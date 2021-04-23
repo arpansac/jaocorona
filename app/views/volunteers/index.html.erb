@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>City</th>
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @volunteers.each do |volunteer| %>
       <tr>
+        <td><%= volunteer.city.blank? ? nil : "#{volunteer.city.name}, #{volunteer.city.state}" %></td>
         <td><%= volunteer.name %></td>
         <td><%= volunteer.phone %></td>
         <td><%= volunteer.email %></td>

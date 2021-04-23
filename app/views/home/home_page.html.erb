@@ -58,6 +58,21 @@
       </small>
     <% end %>
   </section>
+
+  <section class="main d-flex mt-5 flex-md-row flex-column align-items-stretch flex-fill gap-3">
+    <%= button_to new_plasma_donor_path, class: 'btn btn-info', method: :get do %>
+      Add Plasma Donor Contact
+    <% end %>
+
+    <%= button_to new_hospital_bed_path, class: 'btn btn-info', method: :get do %>
+      Add Hospital Contact
+    <% end %>
+
+    <%= button_to new_oxygen_supplier_path, class: 'btn btn-info', method: :get do %>
+      Add Oxygen Supplier Contact
+    <% end %>
+  </section>
+
   <section class="volunteer-reg-link">
     <h5>
       If you can bring in more contacts or can help us verify the contacts being received, please
