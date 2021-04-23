@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an effort to bring together and verify all the contacts of the needed resources for people fighting COVID-19 in our country India.
 
-Things you may want to cover:
+To setup on your system
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Install ruby 2.7.0
+* Install postgres & create an admin user named 'Arpan'
+* Clone the project
+* Run bundle install
+* Run `rails s`
+* Go to http://localhost:3000 on the browser
