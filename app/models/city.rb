@@ -4,5 +4,5 @@ class City < ApplicationRecord
   has_many :oxygen_suppliers
   has_many :volunteers
 
-  default_scope {order(:name)}
+  default_scope {order(:state)}
 end
