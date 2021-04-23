@@ -26,7 +26,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        format.html { redirect_to root_path, notice: "Volunteer was successfully created." }
+        format.html { redirect_to root_path, notice: "Thank You for submitting request to Volunteer" }
         format.json { render :show, status: :created, location: @volunteer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class VolunteersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def volunteer_params
-      params.require(:volunteer).permit(:name, :phone, :email)
+      params.require(:volunteer).permit(:name, :phone, :email, :city_id)
     end
 end

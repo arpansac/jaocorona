@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_145457) do
+ActiveRecord::Schema.define(version: 2021_04_23_063336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,12 +109,14 @@ ActiveRecord::Schema.define(version: 2021_04_22_145457) do
     t.string "name", null: false
     t.string "phone", null: false
     t.string "email", null: false
-    t.string "city", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "city_id", null: false
+    t.index ["city_id"], name: "index_volunteers_on_city_id"
   end
 
   add_foreign_key "hospital_beds", "cities"
   add_foreign_key "oxygen_suppliers", "cities"
   add_foreign_key "plasma_donors", "cities"
+  add_foreign_key "volunteers", "cities"
 end
