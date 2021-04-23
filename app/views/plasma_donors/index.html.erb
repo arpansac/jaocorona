@@ -67,7 +67,7 @@
       <tbody>
       <% @plasma_donors.each do |plasma_donor| %>
         <tr>
-          <td><%= plasma_donor.city_id %></td>
+          <td><%= plasma_donor.city.name %>, <%= plasma_donor.city.state %></td>
           <td><%= plasma_donor.pincode %></td>
           <td><%= plasma_donor.blood_group %></td>
           <td>
