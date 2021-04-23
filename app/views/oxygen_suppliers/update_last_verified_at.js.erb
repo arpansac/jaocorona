@@ -1,0 +1,12 @@
+{
+
+    $('#oxygen-supplier-verified-<%= @oxygen_supplier.id %>').html('✅ Verified: <%= time_ago_in_words(@oxygen_supplier.last_verified_at) %> <br/> <br/>');
+
+    let notification = new Noty({
+        text: 'Updated',
+        theme: 'relax',
+        type: 'success',
+        timeout: 1500
+    }).show();
+
+}

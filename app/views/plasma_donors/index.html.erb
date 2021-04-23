@@ -59,13 +59,15 @@
           <td><%= plasma_donor.pincode %></td>
           <td><%= plasma_donor.blood_group %></td>
           <td>
-            <% if plasma_donor.last_verified_at %>
-              ✅ Verified: <%= time_ago_in_words(plasma_donor.last_verified_at) %>
-              <br/>
-              <br/>
-            <% end %>
+            <span id="plasma-donor-verified-<%= plasma_donor.id %>">
+              <% if plasma_donor.last_verified_at %>
+             ✅ Verified: <%= time_ago_in_words(plasma_donor.last_verified_at) %>
+                <br/>
+                <br/>
+              <% end %>
+            </span>
 
-            Submitted: <%= time_ago_in_words(plasma_donor.updated_at) %>
+            Submitted: <%= time_ago_in_words(plasma_donor.created_at) %>
           </td>
           <td><%= plasma_donor.name %></td>
           <td><%= plasma_donor.phone %></td>
@@ -84,7 +86,12 @@
             <% end %>
           </td>
 
-          <td><%= link_to 'Edit', edit_plasma_donor_path(plasma_donor) %></td>
+          <td>
+            <%= link_to 'Verified Just Now', update_last_verified_at_plasma_donor_path(id: plasma_donor.id), method: :post, remote: true, data: { confirm: 'Are you sure?' } %>
+            <br/>
+            <br/>
+            <%= link_to 'Edit', edit_plasma_donor_path(plasma_donor) %>
+          </td>
           <% if current_user.admin_permission? %>
               <td><%= link_to 'Destroy', plasma_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>

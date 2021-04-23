@@ -5,18 +5,21 @@ Rails.application.routes.draw do
     member do
       post :update_fake
       post :update_unavailable
+      post :update_last_verified_at
     end
   end
   resources :hospital_beds do
     member do
       post :update_fake
       post :update_unavailable
+      post :update_last_verified_at
     end
   end
   resources :plasma_donors do
     member do
       post :update_fake
       post :update_unavailable
+      post :update_last_verified_at
     end
   end
   resources :cities

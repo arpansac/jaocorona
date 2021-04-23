@@ -58,13 +58,15 @@
         <tr>
           <td><%= hospital_bed.city.name %>, <%= hospital_bed.city.state %></td>
           <td>
-            <% if hospital_bed.last_verified_at %>
-              ✅ Verified: <%= time_ago_in_words(hospital_bed.last_verified_at) %>
-              <br/>
-              <br/>
-            <% end %>
+            <span id="hospital-bed-verified-<%= hospital_bed.id %>">
+              <% if hospital_bed.last_verified_at %>
+             ✅ Verified: <%= time_ago_in_words(hospital_bed.last_verified_at) %>
+                <br/>
+                <br/>
+              <% end %>
+            </span>
 
-            Submitted: <%= time_ago_in_words(hospital_bed.updated_at) %>
+            Submitted: <%= time_ago_in_words(hospital_bed.created_at) %>
           </td>
           <td><%= hospital_bed.hospital_name %></td>
           <td><%= hospital_bed.contact_name %></td>
@@ -89,8 +91,12 @@
                 <%= f.select :fake, [['Yes', true], ['No', false]], {selected: hospital_bed.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
               <% end %>
             </td>
-          <td><%= link_to 'Show', hospital_bed %></td>
-          <td><%= link_to 'Edit', edit_hospital_bed_path(hospital_bed) %></td>
+          <td>
+            <%= link_to 'Verified Just Now', update_last_verified_at_hospital_bed_path(id: hospital_bed.id), method: :post, remote: true, data: { confirm: 'Are you sure?' } %>
+            <br/>
+            <br/>
+            <%= link_to 'Edit', edit_hospital_bed_path(hospital_bed) %>
+          </td>
           <% if current_user.admin_permission? %>
             <td><%= link_to 'Destroy', hospital_bed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>

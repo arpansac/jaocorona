@@ -55,13 +55,15 @@
         <tr>
           <td><%= oxygen_supplier.city.name %>, <%= oxygen_supplier.city.state %></td>
           <td>
-            <% if oxygen_supplier.last_verified_at %>
-              ✅ Verified: <%= time_ago_in_words(oxygen_supplier.last_verified_at) %>
-              <br/>
-              <br/>
-            <% end %>
+            <span id="oxygen-supplier-verified-<%= oxygen_supplier.id %>">
+              <% if oxygen_supplier.last_verified_at %>
+             ✅ Verified: <%= time_ago_in_words(oxygen_supplier.last_verified_at) %>
+                <br/>
+                <br/>
+              <% end %>
+            </span>
 
-            Submitted: <%= time_ago_in_words(oxygen_supplier.updated_at) %>
+            Submitted: <%= time_ago_in_words(oxygen_supplier.created_at) %>
           </td>
           <td><%= oxygen_supplier.name %></td>
           <td><%= oxygen_supplier.phone %></td>
@@ -79,8 +81,12 @@
                 <%= f.select :fake, [['Yes', true], ['No', false]], {selected: oxygen_supplier.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
               <% end %>
             </td>
-          <td><%= link_to 'Show', oxygen_supplier %></td>
-          <td><%= link_to 'Edit', edit_oxygen_supplier_path(oxygen_supplier) %></td>
+          <td>
+            <%= link_to 'Verified Just Now', update_last_verified_at_oxygen_supplier_path(id: oxygen_supplier.id), method: :post, remote: true, data: { confirm: 'Are you sure?' } %>
+            <br/>
+            <br/>
+            <%= link_to 'Edit', edit_oxygen_supplier_path(oxygen_supplier) %>
+          </td>
             <% if current_user.admin_permission? %>
               <td><%= link_to 'Destroy', oxygen_supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>

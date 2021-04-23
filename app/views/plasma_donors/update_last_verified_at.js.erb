@@ -1,0 +1,12 @@
+{
+
+    $('#plasma-donor-verified-<%= @plasma_donor.id %>').html('✅ Verified: <%= time_ago_in_words(@plasma_donor.last_verified_at) %> <br/> <br/>');
+
+    let notification = new Noty({
+        text: 'Updated',
+        theme: 'relax',
+        type: 'success',
+        timeout: 1500
+    }).show();
+
+}
