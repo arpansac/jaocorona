@@ -4,4 +4,9 @@ class HomeController < ApplicationController
     @hospital_beds = HospitalBed.active
     @oxygen_suppliers = OxygenSupplier.active
   end
+
+
+  def policies
+
+  end
 end

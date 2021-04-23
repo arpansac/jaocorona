@@ -1,8 +1,11 @@
 <% content_for :meta do %>
   <title>
-    India Covid Info
+    India Beats Covid
   </title>
+  <meta name="og:title" content="India Beats Covid">
   <meta name="description" content="Let's help COVID patients with accurate information of Plasma Donors, Hospitals with ICU Beds and Oxygen Suppliers in our cities in India">
+  <meta name="twitter:title" content="India Beats Covid">
+  <meta name="twitter:description" content="Let's help COVID patients with accurate information of Plasma Donors, Hospitals with ICU Beds and Oxygen Suppliers in our cities in India">
 <% end %>
 
 <div id="page-home">
@@ -19,7 +22,7 @@
   </section>
 
 
-  <section class="main d-flex gap-3">
+  <section class="main d-flex flex-wrap gap-3">
     <%= button_to plasma_donors_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
       Find Plasma Donor
       <br/>
@@ -72,6 +75,9 @@
       </ul>
     </div>
   </section>
+
+
+
 
 
 </div>

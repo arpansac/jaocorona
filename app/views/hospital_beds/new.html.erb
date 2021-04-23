@@ -1,7 +1,20 @@
+<% content_for :meta do %>
+  <title>
+    Add Hospital With COVID-19 Beds
+  </title>
+  <meta name="og:title" content="Add Hospital With COVID-19 Beds">
+  <meta name="description" content="You can share any hospitals around you which you know have beds for COVID-19 patients through this form.">
+  <meta name="twitter:title" content="Add Hospital With COVID-19 Beds">
+  <meta name="twitter:description" content="You can share any hospitals around you which you know have beds for COVID-19 patients through this form.">
+<% end %>
+
 <div id="page-new-hospital-beds">
   <h1>
     Share Information About Available Hospital Beds
   </h1>
+  <p>
+    You can share any hospitals around you which you know have beds for COVID-19 patients through this form.
+  </p>
 
   <%= render 'form', hospital_bed: @hospital_bed %>
 

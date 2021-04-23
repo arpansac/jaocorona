@@ -8,11 +8,18 @@
 
     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= favicon_link_tag 'indiabeatscovid.png', :rel => 'icon', :type =>  'image/png' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 
     <%= yield :meta %>
+
+    <meta name="og:image" content="<%= image_url('indiabeatscovid.png') %>">
+    <meta name="og:image:secure_url" content="<%= image_url('indiabeatscovid.png') %>">
+    <meta name="og:type" content="Website">
+    <meta name="twitter:image" content="<%= image_url('indiabeatscovid.png') %>">
+
+
     <%= yield :extra_styles %>
   </head>
 

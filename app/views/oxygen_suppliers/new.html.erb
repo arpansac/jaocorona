@@ -1,5 +1,18 @@
+<% content_for :meta do %>
+  <title>
+    Add Oxygen Supplier Information
+  </title>
+  <meta name="og:title" content="Add Oxygen Supplier Information">
+  <meta name="description" content="You can share details of active oxygen suppliers for COVID-19 patients through this form.">
+  <meta name="twitter:title" content="Add Oxygen Supplier Information">
+  <meta name="twitter:description" content="You can share details of active oxygen suppliers for COVID-19 patients through this form.">
+<% end %>
+
 <div id="page-new-oxygen-suppliers">
   <h1>Share Oxygen Supplier Information</h1>
+  <p>
+    You can share details of active oxygen suppliers for COVID-19 patients through this form.
+  </p>
 
   <%= render 'form', oxygen_supplier: @oxygen_supplier %>
 
