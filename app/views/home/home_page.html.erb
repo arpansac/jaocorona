@@ -58,17 +58,6 @@
       </small>
     <% end %>
 
-    <%= button_to hospital_beds_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
-       Hospital With Beds
-      <br/>
-      <small>
-        Total: <%= @hospital_beds[0] %>
-      </small>
-      <small>
-        Last Updated: <%= !@hospital_beds[1].blank? ?  time_ago_in_words(@hospital_beds[1].updated_at) : 'NA' %>
-      </small>
-    <% end %>
-
     <%= button_to medicines_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
        COVID Medicine Suppliers
       <br/>
