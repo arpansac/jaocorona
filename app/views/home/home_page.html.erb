@@ -32,7 +32,7 @@
         Total: <%= @plasma_donors[0] %>
       </small>
       <small>
-        Last Updated: <%= !@plasma_donors[1].blank? ?  time_ago_in_words(@plasma_donors[1].updated_at) : 'NA' %>
+        Last Updated: <%= !@plasma_donors[1].blank? ?  time_ago_in_words(@plasma_donors[1].last_verified_at || @plasma_donors[1].updated_at) : 'NA' %>
       </small>
     <% end %>
 
@@ -43,7 +43,7 @@
         Total: <%= @hospital_beds[0] %>
       </small>
       <small>
-        Last Updated: <%= !@hospital_beds[1].blank? ?  time_ago_in_words(@hospital_beds[1].updated_at) : 'NA' %>
+        Last Updated: <%= !@hospital_beds[1].blank? ?  time_ago_in_words(@hospital_beds[1].last_verified_at || @hospital_beds[1].updated_at) : 'NA' %>
       </small>
     <% end %>
 
@@ -54,7 +54,7 @@
         Total: <%= @oxygen_suppliers[0] %>
       </small>
       <small>
-        Last Updated: <%= !@oxygen_suppliers[1].blank? ?  time_ago_in_words(@oxygen_suppliers[1].updated_at) : 'NA' %>
+        Last Updated: <%= !@oxygen_suppliers[1].blank? ?  time_ago_in_words(@oxygen_suppliers[1].last_verified_at || @oxygen_suppliers[1].updated_at) : 'NA' %>
       </small>
     <% end %>
 
@@ -65,7 +65,7 @@
         Total: <%= @medicines[0] %>
       </small>
       <small>
-        Last Updated: <%= !@medicines[1].blank? ?  time_ago_in_words(@medicines[1].updated_at) : 'NA' %>
+        Last Updated: <%= !@medicines[1].blank? ?  time_ago_in_words(@medicines[1].last_verified_at || @medicines[1].updated_at) : 'NA' %>
       </small>
     <% end %>
   </section>
