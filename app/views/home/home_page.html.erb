@@ -124,11 +124,9 @@
     <div class="select-city">
       <h6>
         Filter by City
-        <% if !@city.blank? %>
-          <small>
-            <%= link_to 'Clear', hospital_beds_path %>
-          </small>
-        <% end %>
+        <small>
+          <%= link_to 'Clear', root_path %>
+        </small>
       </h6>
       <%= form_with url: index_table_external_links_path, method: :get, local: false do |f| %>
         <%= f.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {selected: (@city.blank? ? nil : @city.id), include_blank: 'Select Your City'}, class: 'form-select city-select', :onchange => 'Rails.fire(this.form, "submit");' %>

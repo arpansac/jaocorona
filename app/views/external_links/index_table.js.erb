@@ -1,3 +1,12 @@
 {
     $('#external-links-table').replaceWith($('<%= escape_javascript render 'external_links/list_table' %>'));
+
+    if ('<%= !@city_id.blank? %>' == 'true') {
+        let queryParams = new URLSearchParams(window.location.search)
+        queryParams.set("city_id", '<%= @city_id %>');
+        history.replaceState(null, null, "?"+queryParams.toString());
+
+    }
+
+
 }
