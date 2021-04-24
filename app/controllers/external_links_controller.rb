@@ -78,7 +78,7 @@ class ExternalLinksController < ApplicationController
   def destroy
     @external_link.destroy
     respond_to do |format|
-      format.html { redirect_to external_links_url, notice: "External link was successfully destroyed." }
+      format.html { redirect_to root_path, notice: "External link was successfully destroyed." }
       format.json { head :no_content }
     end
   end
