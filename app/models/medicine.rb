@@ -6,7 +6,7 @@ class Medicine < ApplicationRecord
     return Medicine.where(
         fake: false,
         unavailable: false,
-        ).order('created_at desc').count, Medicine.all.order('last_verified_at desc', 'created_at desc').first
+        ).order('created_at desc').count, Medicine.all.order('last_verified_at desc').first
   end
 
   def self.active_list

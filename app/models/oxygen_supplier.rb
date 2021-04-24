@@ -5,7 +5,7 @@ class OxygenSupplier < ApplicationRecord
     return OxygenSupplier.where(
         fake: false,
         unavailable: false,
-        ).order('created_at desc').count, OxygenSupplier.all.order('updated_at desc').first
+        ).order('created_at desc').count, OxygenSupplier.all.order('last_verified_at desc').first
   end
 
   def self.active_list

@@ -8,7 +8,7 @@ class PlasmaDonor < ApplicationRecord
     return PlasmaDonor.where(
         fake: false,
         unavailable: false,
-    ).order('created_at desc').count, PlasmaDonor.all.order('updated_at desc').first
+    ).order('created_at desc').count, PlasmaDonor.all.order('last_verified_at desc').first
   end
 
 

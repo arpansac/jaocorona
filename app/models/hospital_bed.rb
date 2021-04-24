@@ -5,7 +5,7 @@ class HospitalBed < ApplicationRecord
     return HospitalBed.where(
         fake: false,
         unavailable: false,
-        ).order('created_at desc').count, HospitalBed.all.order('last_verified_at desc', 'created_at desc').first
+        ).order('created_at desc').count, HospitalBed.all.order('last_verified_at desc').first
   end
 
   def self.active_list
