@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     @plasma_donors = PlasmaDonor.active
     @hospital_beds = HospitalBed.active
     @oxygen_suppliers = OxygenSupplier.active
+    @medicines = Medicine.active
   end
 
 

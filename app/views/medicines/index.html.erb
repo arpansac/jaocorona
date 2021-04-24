@@ -1,33 +1,107 @@
-<p id="notice"><%= notice %></p>
+<% content_for :meta do %>
+  <title>
+    COVID-19 Meds/Injection Supplier List
+  </title>
+  <meta name="og:title" content="COVID-19 Meds/Injection Supplier List">
+  <meta name="description" content="List of COVID-19 Meds/Injection Supplier">
+  <meta name="twitter:title" content="COVID-19 Meds/Injection Supplier List">
+  <meta name="twitter:description" content="List of COVID-19 Meds/Injection Supplier">
+<% end %>
 
-<h1>Medicines</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Medicine name</th>
-      <th>Phone</th>
-      <th>Alternate phone</th>
-      <th>City</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="page-medicine-suppliers-index">
+  <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @medicines.each do |medicine| %>
-      <tr>
-        <td><%= medicine.medicine_name %></td>
-        <td><%= medicine.phone %></td>
-        <td><%= medicine.alternate_phone %></td>
-        <td><%= medicine.city_id %></td>
-        <td><%= link_to 'Show', medicine %></td>
-        <td><%= link_to 'Edit', edit_medicine_path(medicine) %></td>
-        <td><%= link_to 'Destroy', medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <h1>COVID-19 Meds/Injection Supplier List</h1>
+  <p>
+    COVID-19 Meds/Injection Supplier List
+  </p>
+
+  <div>
+
+    <h4>
+      <%= link_to 'Click Here', new_medicine_path, class: 'btn btn-lg btn-primary' %>
+      to share any information about available medicine suppliers for COVID-19
+    </h4>
+  </div>
+
+  <div>
+    <button onClick="window.location.reload();" class="btn btn-outline-secondary btn-sm">
+      <i class="fas fa-redo"></i>
+      Refresh Page
+    </button>
+  </div>
+
+  <div class="table-container">
+    <div class="select-city">
+      <h6>
+        Select Your City
+        <% if !@city.blank? %>
+          <small>
+            <%= link_to 'Clear', medicines_path %>
+          </small>
+        <% end %>
+      </h6>
+      <%= form_with url: medicines_url, method: :get, local: true do |f| %>
+        <%= f.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {selected: (@city.blank? ? nil : @city.id), include_blank: 'Select Your City'}, class: 'form-select city-select', :onchange => 'this.form.submit();' %>
+      <% end %>
+
+    </div>
+
+
+    <table class="table table-hover">
+      <thead>
+      <tr class="table-primary">
+        <th scope="col">City</th>
+        <th scope="col">Med/Injection</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Alternate phone</th>
+
+        <% if user_signed_in? %>
+          <th scope="col">Unavailable</th>
+          <th scope="col">Fake</th>
+          <th colspan="3"></th>
+        <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @medicines.each do |medicine| %>
+        <tr>
+          <td><%= medicine.city.name %>, <%= medicine.city.state %></td>
+          <td><%= medicine.medicine_name %></td>
+          <td><%= medicine.address %></td>
+          <td><%= medicine.phone %></td>
+          <td><%= medicine.alternate_phone %></td>
+          <% if user_signed_in? %>
+            <td>
+              <%= form_with url: update_unavailable_medicine_path(id: medicine.id), method: :post, local: false do |f| %>
+                <%= f.select :unavailable, [['Yes', true], ['No', false]], {selected: medicine.unavailable, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
 
-<%= link_to 'New Medicine', new_medicine_path %>
+            <td>
+              <%= form_with url: update_fake_medicine_path(id: medicine.id), method: :post, local: false do |f| %>
+                <%= f.select :fake, [['Yes', true], ['No', false]], {selected: medicine.fake, remote: true}, :onchange => 'Rails.fire(this.form, "submit");' %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'Verified Just Now', update_last_verified_at_medicine_path(id: medicine.id), method: :post, remote: true, data: { confirm: 'Are you sure?' } %>
+              <br/>
+              <br/>
+              <%= link_to 'Edit', edit_medicine_path(medicine) %>
+            </td>
+            <% if current_user.admin_permission? %>
+              <td><%= link_to 'Destroy', medicine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+</div>

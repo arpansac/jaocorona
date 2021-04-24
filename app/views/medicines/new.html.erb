@@ -1,5 +1,23 @@
-<h1>New Medicine</h1>
+<% content_for :meta do %>
+  <title>
+    Add a COVID-19 Meds/Injection supplier
+  </title>
+  <meta name="og:title" content="Add a COVID-19 Meds/Injection supplier">
+  <meta name="description" content="Fill this form to add the contact of a COVID-19 Medicine/Injections supplier">
+  <meta name="twitter:title" content="Add a COVID-19 Meds/Injection supplier">
+  <meta name="twitter:description" content="Fill this form to add the contact of a COVID-19 Medicine/Injections supplier">
+<% end %>
 
-<%= render 'form', medicine: @medicine %>
+<div class="page-new-medicine">
+  <h1>
+    Add a COVID-19 Meds/Injection supplier
+  </h1>
+  <p>
+    Fill this form to add the contact of a COVID-19 Medicine/Injections supplier
+  </p>
 
-<%= link_to 'Back', medicines_path %>
+  <%= render 'form', medicine: @medicine %>
+
+  <%= link_to 'All Medicine Suppliers', medicines_path %>
+</div>
+

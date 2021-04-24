@@ -1,0 +1,12 @@
+{
+
+    $('#oxygen-supplier-verified-<%= @medicine.id %>').html('✅ Verified: <%= time_ago_in_words(@medicine.last_verified_at) %> ago <br/> <br/>');
+
+    let notification = new Noty({
+        text: 'Updated',
+        theme: 'relax',
+        type: 'success',
+        timeout: 1500
+    }).show();
+
+}

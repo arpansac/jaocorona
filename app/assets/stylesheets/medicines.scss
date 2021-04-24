@@ -1,3 +1,36 @@
-// Place all the styles related to the medicines controller here.
+// Place all the styles related to the hospital_beds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+#page-new-medicine {
+  max-width: 800px;
+  margin: 24px auto;
+}
+
+
+#page-medicine-suppliers-index {
+
+  .table-container {
+    margin-top: 36px;
+    max-width: 100%;
+    overflow-x: auto;
+
+    .select-city {
+      width: 300px;
+      margin-bottom: 12px;
+      padding: 12px;
+      border: 1px solid;
+      border-radius: 5px;
+    }
+
+    table {
+      tr {
+        td {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -12,32 +12,32 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :medicine_name %>
-    <%= form.text_field :medicine_name %>
+    <%= form.label :medicine_name, "Medicine/Injection*", class: 'form-label' %>
+    <%= form.select :medicine_name, Medicine.medicine_names.keys.map{|med| [med.humanize, med]}, {include_blank: 'Select'} ,{class: 'form-select', required: true}%>
   </div>
 
   <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.label :phone, "Phone*", class: 'form-label' %>
+    <%= form.text_field :phone, class: 'form-control', required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :alternate_phone %>
-    <%= form.text_field :alternate_phone %>
+    <%= form.label :alternate_phone, "Alternate Phone", class: 'form-label' %>
+    <%= form.text_field :alternate_phone, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :address, 'Address (optional)', class: 'form-label' %>
-    <%= form.text_field :address, class: 'form-control' %>
+    <%= form.text_field :address, class: 'form-control', class: 'form-control' %>
   </div>
 
 
   <div class="field">
-    <%= form.label :city_id %>
-    <%= form.text_field :city_id %>
+    <%= form.label :city_id, "City", class: 'form-label' %>
+    <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -26,7 +26,7 @@
 
   <section class="main d-flex flex-md-row flex-column align-items-stretch flex-fill gap-3">
     <%= button_to plasma_donors_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
-      Find Plasma Donor
+       Plasma Donor
       <br/>
       <small>
         Total: <%= @plasma_donors[0] %>
@@ -37,7 +37,7 @@
     <% end %>
 
     <%= button_to hospital_beds_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
-      Find Hospital With Beds
+       Hospital With Beds
       <br/>
       <small>
         Total: <%= @hospital_beds[0] %>
@@ -48,13 +48,35 @@
     <% end %>
 
     <%= button_to oxygen_suppliers_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
-      Find Oxygen Suppliers
+       Oxygen Suppliers
       <br/>
       <small>
         Total: <%= @oxygen_suppliers[0] %>
       </small>
       <small>
         Last Updated: <%= !@oxygen_suppliers[1].blank? ?  time_ago_in_words(@oxygen_suppliers[1].updated_at) : 'NA' %>
+      </small>
+    <% end %>
+
+    <%= button_to hospital_beds_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
+       Hospital With Beds
+      <br/>
+      <small>
+        Total: <%= @hospital_beds[0] %>
+      </small>
+      <small>
+        Last Updated: <%= !@hospital_beds[1].blank? ?  time_ago_in_words(@hospital_beds[1].updated_at) : 'NA' %>
+      </small>
+    <% end %>
+
+    <%= button_to medicines_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
+       COVID Medicine Suppliers
+      <br/>
+      <small>
+        Total: <%= @medicines[0] %>
+      </small>
+      <small>
+        Last Updated: <%= !@medicines[1].blank? ?  time_ago_in_words(@medicines[1].updated_at) : 'NA' %>
       </small>
     <% end %>
   </section>
@@ -70,6 +92,10 @@
 
     <%= button_to new_oxygen_supplier_path, class: 'btn btn-info', method: :get do %>
       Add Oxygen Supplier Contact
+    <% end %>
+
+    <%= button_to new_medicine_path, class: 'btn btn-info', method: :get do %>
+      Add Medicine Supplier Contact
     <% end %>
   </section>
 
@@ -92,9 +118,5 @@
       </ul>
     </div>
   </section>
-
-
-
-
 
 </div>
