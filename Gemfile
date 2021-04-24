@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'link_thumbnailer'
+
 gem 'mini_racer', platforms: :ruby
 
 gem "font-awesome-rails"

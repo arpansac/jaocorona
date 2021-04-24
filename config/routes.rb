@@ -23,6 +23,15 @@ Rails.application.routes.draw do
       post :update_last_verified_at
     end
   end
+
+  # resources :medicines do
+  #   member do
+  #     post :update_fake
+  #     post :update_unavailable
+  #     post :update_last_verified_at
+  #   end
+  # end
+
   resources :cities
   devise_for :users
 

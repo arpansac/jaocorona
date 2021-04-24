@@ -83,6 +83,6 @@ class OxygenSuppliersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def oxygen_supplier_params
-      params.require(:oxygen_supplier).permit(:name, :phone, :alternate_phone, :city_id, :disclaimer)
+      params.require(:oxygen_supplier).permit(:name, :phone, :address, :alternate_phone, :city_id, :disclaimer)
     end
 end

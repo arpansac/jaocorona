@@ -49,7 +49,7 @@
       <thead>
       <tr class="table-primary">
         <th  scope="col">City</th>
-        <th  scope="col">Pincode</th>
+        <th  scope="col">Address</th>
         <th  scope="col">Blood group</th>
         <th  scope="col">Time</th>
         <th  scope="col">Name</th>
@@ -68,7 +68,11 @@
       <% @plasma_donors.each do |plasma_donor| %>
         <tr>
           <td><%= plasma_donor.city.name %>, <%= plasma_donor.city.state %></td>
-          <td><%= plasma_donor.pincode %></td>
+          <td>
+            <%= plasma_donor.address %>
+            <br/>
+            <%= plasma_donor.pincode %>
+          </td>
           <td><%= plasma_donor.blood_group %></td>
           <td>
             <span id="plasma-donor-verified-<%= plasma_donor.id %>">
@@ -112,15 +116,6 @@
       <% end %>
       </tbody>
     </table>
-  </div>
-
-
-  <div>
-
-    <h6>
-      <%= link_to 'Click Here', new_plasma_donor_path, class: 'btn btn-lg btn-primary' %>
-      share your own or any other Plasma Donor's information.
-    </h6>
   </div>
 
 </div>

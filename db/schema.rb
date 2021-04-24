@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_063336) do
+ActiveRecord::Schema.define(version: 2021_04_24_083945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,22 @@ ActiveRecord::Schema.define(version: 2021_04_23_063336) do
     t.index ["city_id"], name: "index_hospital_beds_on_city_id"
   end
 
+  create_table "medicines", force: :cascade do |t|
+    t.string "medicine_name", null: false
+    t.string "contact_name"
+    t.string "phone", null: false
+    t.string "alternate_phone"
+    t.bigint "city_id", null: false
+    t.boolean "fake", default: false
+    t.boolean "unavailable", default: false
+    t.datetime "last_updated_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.index ["city_id"], name: "index_medicines_on_city_id"
+  end
+
   create_table "oxygen_suppliers", force: :cascade do |t|
     t.string "name", null: false
     t.string "phone", null: false
@@ -56,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_063336) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "disclaimer", default: false
+    t.string "address"
     t.index ["city_id"], name: "index_oxygen_suppliers_on_city_id"
   end
 
@@ -75,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_063336) do
     t.datetime "updated_at", precision: 6, null: false
     t.date "covid_cured_at"
     t.boolean "disclaimer", default: false
+    t.string "address"
     t.index ["city_id"], name: "index_plasma_donors_on_city_id"
   end
 
@@ -116,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_063336) do
   end
 
   add_foreign_key "hospital_beds", "cities"
+  add_foreign_key "medicines", "cities"
   add_foreign_key "oxygen_suppliers", "cities"
   add_foreign_key "plasma_donors", "cities"
   add_foreign_key "volunteers", "cities"

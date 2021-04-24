@@ -41,10 +41,10 @@
         <th scope="col">Name</th>
         <th scope="col">Phone</th>
         <th scope="col">Alternate phone</th>
+        <th scope="col">Address</th>
         <% if user_signed_in? %>
         <th scope="col">Unavailable</th>
         <th scope="col">Fake</th>
-        <th scope="col">Last verified at</th>
         <th colspan="3"></th>
         <% end %>
       </tr>
@@ -68,6 +68,7 @@
           <td><%= oxygen_supplier.name %></td>
           <td><%= oxygen_supplier.phone %></td>
           <td><%= oxygen_supplier.alternate_phone %></td>
+          <td><%= oxygen_supplier.address %></td>
           <% if user_signed_in? %>
 
             <td>
@@ -95,17 +96,6 @@
       <% end %>
       </tbody>
     </table>
-  </div>
-
-
-  <br>
-
-  <div>
-
-    <h6>
-      <%= link_to 'Click Here', new_oxygen_supplier_path, class: 'btn btn-md btn-primary' %>
-      to share any information about oxygen suppliers.
-    </h6>
   </div>
 
 </div>

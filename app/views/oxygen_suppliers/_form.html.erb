@@ -27,6 +27,12 @@
   </div>
 
   <div class="field">
+    <%= form.label :address, 'Address (optional)', class: 'form-label' %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :city_id, "City*", class: 'form-label' %>
     <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
   </div>

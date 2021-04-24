@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Medicine name:</strong>
+  <%= @medicine.medicine_name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @medicine.phone %>
+</p>
+
+<p>
+  <strong>Alternate phone:</strong>
+  <%= @medicine.alternate_phone %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @medicine.city_id %>
+</p>
+
+<%= link_to 'Edit', edit_medicine_path(@medicine) %> |
+<%= link_to 'Back', medicines_path %>

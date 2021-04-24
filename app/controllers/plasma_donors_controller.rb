@@ -84,6 +84,6 @@ class PlasmaDonorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plasma_donor_params
-      params.require(:plasma_donor).permit(:name, :phone, :alternate_phone, :blood_group, :city_id, :pincode, :covid_cured_at, :disclaimer)
+      params.require(:plasma_donor).permit(:name, :phone, :address, :alternate_phone, :blood_group, :city_id, :pincode, :covid_cured_at, :disclaimer)
     end
 end
