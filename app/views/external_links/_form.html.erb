@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= form.label :url, 'Link (please enter complete URL, we will fetch information from there automatically)', class: 'form-label' %>
-    <%= form.text_field :url, class: 'form-control', required: true %>
+    <%= form.text_field :url, class: 'form-control', placeholder: 'http://.... or https://...', required: true %>
   </div>
 
   <div class="field">
-    <%= form.label :description, 'Description', class: 'form-label' %>
+    <%= form.label :description, 'Add Small Description', class: 'form-label' %>
     <%= form.text_field :description, class: 'form-control', required: true %>
   </div>
 
@@ -28,6 +28,6 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
   </div>
 <% end %>

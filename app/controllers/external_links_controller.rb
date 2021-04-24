@@ -1,10 +1,10 @@
 class ExternalLinksController < ApplicationController
   before_action :set_external_link, only: %i[ destroy  ]
-
+  before_action :authenticate_user!, only: [:destroy, :new, :create]
   # GET /external_links or /external_links.json
-  def index
-    @external_links = ExternalLink.all
-  end
+  # def index
+  #   @external_links = ExternalLink.all
+  # end
 
 
   def index_table
