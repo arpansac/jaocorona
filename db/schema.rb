@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_093314) do
+ActiveRecord::Schema.define(version: 2021_04_24_143827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 2021_04_24_093314) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["state"], name: "index_cities_on_state"
+  end
+
+  create_table "external_links", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.string "url", null: false
+    t.string "title", null: false
+    t.string "description"
+    t.string "favicon"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_external_links_on_city_id"
   end
 
   create_table "hospital_beds", force: :cascade do |t|

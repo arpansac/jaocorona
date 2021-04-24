@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>External Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Favicon</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @external_links.each do |external_link| %>
+      <tr>
+        <td><%= external_link.url %></td>
+        <td><%= external_link.title %></td>
+        <td><%= external_link.description %></td>
+        <td><%= external_link.favicon %></td>
+        <td><%= link_to 'Show', external_link %></td>
+        <td><%= link_to 'Edit', edit_external_link_path(external_link) %></td>
+        <td><%= link_to 'Destroy', external_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New External Link', new_external_link_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @external_link.url %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @external_link.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @external_link.description %>
+</p>
+
+<p>
+  <strong>Favicon:</strong>
+  <%= @external_link.favicon %>
+</p>
+
+<%= link_to 'Edit', edit_external_link_path(@external_link) %> |
+<%= link_to 'Back', external_links_path %>

@@ -1,0 +1,50 @@
+<div id="external-links-table" class="table-container">
+
+  <table class="table table-hover">
+    <thead>
+    <tr class="table-primary">
+      <th scope="col">City</th>
+      <th scope="col">Time</th>
+      <th scope="col"></th>
+
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @external_links.each do |external_link| %>
+      <tr>
+        <td>
+          <%= external_link.city.name %>, <%= external_link.city.state %>
+        </td>
+        <td>
+          Added here <%= time_ago_in_words(external_link.created_at) %> ago
+        </td>
+        <td>
+
+          <a href="<%= external_link.url %>" target="_blank">
+            <div class="d-flex">
+              <img src="<%= external_link.favicon %>" width="50px" style="margin-right: 10px;">
+              <div>
+                <%= external_link.title %>
+                <br/>
+                <br/>
+                <%= external_link.description %>
+              </div>
+            </div>
+          </a>
+        </td>
+        <td>
+          <% if user_signed_in? && current_user.admin_permission? %>
+          <%= link_to 'Destroy', external_link, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+
+</div>

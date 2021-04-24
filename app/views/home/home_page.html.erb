@@ -26,7 +26,7 @@
 
   <section class="main d-flex flex-md-row flex-column align-items-stretch flex-fill gap-3">
     <%= button_to plasma_donors_path, class: 'btn btn-outline-primary btn-lg', method: :get do %>
-       Plasma Donor
+       Plasma Donors
       <br/>
       <small>
         Total: <%= @plasma_donors[0] %>
@@ -106,6 +106,36 @@
         </li>
       </ul>
     </div>
+  </section>
+
+  <section class="external-links">
+
+    <h3>Links to more data</h3>
+    <p>This is all the data available according to each city which people are sharing on different WhatsApp groups, Twitter and other social media apps.</p>
+
+    <% if user_signed_in? %>
+
+      <div class="my-3">
+        <%= link_to 'Add External Link', new_external_link_path, class: 'btn btn-info' %>
+      </div>
+
+    <% end %>
+
+    <div class="select-city">
+      <h6>
+        Filter by City
+        <% if !@city.blank? %>
+          <small>
+            <%= link_to 'Clear', hospital_beds_path %>
+          </small>
+        <% end %>
+      </h6>
+      <%= form_with url: index_table_external_links_path, method: :get, local: false do |f| %>
+        <%= f.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {selected: (@city.blank? ? nil : @city.id), include_blank: 'Select Your City'}, class: 'form-select city-select', :onchange => 'Rails.fire(this.form, "submit");' %>
+      <% end %>
+
+    </div>
+    <%= render 'external_links/list_table' %>
   </section>
 
 </div>

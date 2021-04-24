@@ -1,0 +1,33 @@
+<%= form_with(model: external_link) do |form| %>
+  <% if external_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(external_link.errors.count, "error") %> prohibited this external_link from being saved:</h2>
+
+      <ul>
+        <% external_link.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :url, 'Link (please enter complete URL, we will fetch information from there automatically)', class: 'form-label' %>
+    <%= form.text_field :url, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, 'Description', class: 'form-label' %>
+    <%= form.text_field :description, class: 'form-control', required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city_id, "City (adding a city will help us classify it)", class: 'form-label' %>
+    <%= form.select :city_id, City.all.map{|city| ["#{city.name}, #{city.state}", city.id]}, {include_blank: 'Select'} ,{class: 'form-select city-select', required: true}%>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -37,4 +37,32 @@
   section.volunteer-reg-link {
     margin-top: 24px;
   }
+
+  section.external-links {
+
+    margin-top: 48px;
+    background-color: aliceblue;
+    padding: 1.5rem;
+    .table-container {
+      margin-top: 36px;
+      max-width: 100%;
+      overflow-x: auto;
+
+      .select-city {
+        width: 300px;
+        margin-bottom: 12px;
+        padding: 12px;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+
+      table {
+        tr {
+          td {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
 }

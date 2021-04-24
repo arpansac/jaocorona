@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :external_links do
+    collection do
+      get :index_table
+    end
+  end
+
+
   resources :cities
   devise_for :users
 
