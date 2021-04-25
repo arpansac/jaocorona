@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'rack-cors', :require => 'rack/cors'
+
+
 gem 'link_thumbnailer'
 
 gem 'mini_racer', platforms: :ruby
