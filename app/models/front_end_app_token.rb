@@ -1,0 +1,2 @@
+class FrontEndAppToken < ApplicationRecord
+end
