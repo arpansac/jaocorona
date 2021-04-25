@@ -1,7 +1,7 @@
 class PlasmaDonor < ApplicationRecord
   belongs_to :city
 
-  enum blood_group: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-", "Blood Bank"]
+  enum blood_group: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-", "Blood Bank", "All Blood Groups"]
 
   # this gets the aggregated count and the last updated
   def self.active
