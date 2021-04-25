@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     else
       @external_links = ExternalLink.all.order('created_at asc')
     end
+
   end
 
 

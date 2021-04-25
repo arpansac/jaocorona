@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'policies', to: 'home#policies'
-
+  get 'home_stats', to: 'home#home_page'
   resources :volunteers
   resources :oxygen_suppliers do
     member do
