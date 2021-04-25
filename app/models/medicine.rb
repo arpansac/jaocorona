@@ -13,6 +13,6 @@ class Medicine < ApplicationRecord
     return Medicine.where(
         fake: false,
         unavailable: false,
-        ).order('created_at desc')
+        ).order('updated_at desc')
   end
 end

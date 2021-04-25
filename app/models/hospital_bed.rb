@@ -12,6 +12,6 @@ class HospitalBed < ApplicationRecord
     return HospitalBed.where(
         fake: false,
         unavailable: false,
-        ).order('created_at desc')
+        ).order('updated_at desc')
   end
 end
