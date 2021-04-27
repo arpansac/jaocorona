@@ -1,6 +1,6 @@
 class Medicine < ApplicationRecord
   belongs_to :city
-  enum medicine_name: ["Remdesivir", "Fabiflu", "Favipiravir", "Tocilizumab", "All COVID-19 Medicine", "Vaccination"]
+  enum medicine_name: ["Remdesivir", "Fabiflu", "Favipiravir", "Tocilizumab", "All COVID-19 Medicine", "Vaccination", "Ambulance"]
 
   def self.active
     return Medicine.where(
