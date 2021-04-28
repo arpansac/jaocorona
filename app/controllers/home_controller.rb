@@ -18,4 +18,9 @@ class HomeController < ApplicationController
   def policies
 
   end
+
+  def version
+
+  end
+
 end
